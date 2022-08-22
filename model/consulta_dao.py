@@ -32,7 +32,7 @@ class ConsultaDAO():
         conn.commit()  # salvar no banco
         conn.close()  # fecha a conexão
 
-    def delete(id: int):
+    def delete(id):
         print(id)
         conn = connect()
         cursor = conn.cursor()
