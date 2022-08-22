@@ -80,13 +80,18 @@ class MainWindow(QMainWindow):
         self.descricao.clear()
 
     def delete(self):
+        # pega a linha 
         lineSel = self.tabela.currentRow()
 
+        item = self.tabela.item(lineSel,0) 
+        id = item.text()
+        print(id)
+        # remove do banco
+        ConsultaDAO.delete(id) 
+        # remove a linha 
         self.tabela.removeRow(lineSel)
 
-        id = self.tabela.item(lineSel, 0)
-        ConsultaDAO.delete(id)
-
+   
     def addTableWidget(self, c: Consulta):
         line = self.tabela.rowCount()
         self.tabela.insertRow(line)
