@@ -10,8 +10,8 @@ class ConsultaDAO():
         conn = connect()  # Cria a conexão
         cursor = conn.cursor()  # manipular o banco
         SQL = "INSERT INTO Consultorias(nome,email,telefone,data,estado,descricao) VALUES (?,?,?,?,?,?);"
-        dados = [c.nome, c.id ,c.email, c.telefone, c.data, c.estado,
-                 c.descricao]  # lista com os valores de entrada
+        dados = [c.nome, c.email, c.telefone, c.data, c.estado,
+                 c.descricao,]  # lista com os valores de entrada
         cursor.execute(SQL, dados)
         # pega o ID do último selecionado
         id_return = cursor.execute("SELECT last_insert_rowid();")
@@ -27,7 +27,7 @@ class ConsultaDAO():
         cursor = conn.cursor()
         SQL = "UPDATE Consultorias SET nome=?,email=?,telefone=?,data=?,estado=?,descricao=? WHERE id=?"
         dados = [c.nome, c.email, c.telefone, c.data, c.estado,
-                 c.descricao, c.id]  # lista com os valores de entrada
+                 c.descricao,c.id] # lista com os valores de entrada
         cursor.execute(SQL, dados)
         conn.commit()  # salvar no banco
         conn.close()  # fecha a conexão
